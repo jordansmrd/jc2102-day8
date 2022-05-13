@@ -156,6 +156,9 @@ Occupation
         let age = parseInt(document.getElementById('tbUmur').value)
 
         let person = new Person(name,occ,gender,age)
+    
+        document.getElementById('tbNama').value = ''
+        document.getElementById('tbUmur').value = ''
 
          
 
@@ -189,39 +192,12 @@ Occupation
             new Person('Alex','Pro Player Ayodance','Pria',25)
         ]
 
-        function renderData(editIdx)
+        function renderData()
         {
             let htmlResult = ''
-            dataPerson.forEach((item,idx) =>
-            {
-            if(editIdx == idx)
-            {
 
-                htmlResult += `
-             <tr>
-            <td> 
-                ${idx+1}
-               </td>
-               <td>
-                ${item.name}
-                </td>
-                <td>
-                ${item.occupation}
-                </td>
-                <td>
-                  ${item.gender} 
-                </td>
-            <td>
-                ${item.age}   
-            </td>
-            <td>
-            <button onclick="renderData()"> Cancel</button>            
-            <button onclick="SaveEditData(${idx})"> Save</button>            
-            </td>
-         </tr>
-             `
-            }
-            else
+            
+            dataPerson.forEach((item,idx) =>
             {
              htmlResult += `
              <tr>
@@ -241,14 +217,11 @@ Occupation
                 ${item.age}   
             </td>
             <td>
-            <button onclick="renderData(${idx})"> Edit</button>            
             <button onclick="DeleteData(${idx})"> Delete</button>            
             </td>
          </tr>
              `
-            }
-        })
-            
+            })
 
         document.getElementsByTagName('tbody')[0].innerHTML = htmlResult                    
         }
